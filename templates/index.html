@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lexer Playground</title>
+
+<style>
+body{
+font-family: Arial;
+margin:40px;
+}
+
+textarea{
+width:600px;
+height:200px;
+font-family:monospace;
+}
+
+button{
+margin-top:10px;
+padding:10px;
+}
+
+table{
+margin-top:20px;
+border-collapse: collapse;
+}
+
+td,th{
+border:1px solid black;
+padding:6px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Mini Compiler Lexer</h2>
+
+<textarea id="code">
+def add(x,y):
+    return x+y
+</textarea>
+
+<br>
+
+<button onclick="runCode()">Run</button>
+
+<table id="result">
+<tr>
+<th>Type</th>
+<th>Value</th>
+<th>Line</th>
+<th>Column</th>
+</tr>
+</table>
+
+<script>
+
+function runCode(){
+
+let code = document.getElementById("code").value
+
+fetch("/run",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({code:code})
+})
+.then(res=>res.json())
+.then(data=>{
+
+let table = document.getElementById("result")
+
+table.innerHTML = `
+<tr>
+<th>Type</th>
+<th>Value</th>
+<th>Line</th>
+<th>Column</th>
+</tr>
+`
+
+data.forEach(tok=>{
+table.innerHTML += `
+<tr>
+<td>${tok.type}</td>
+<td>${tok.value}</td>
+<td>${tok.line}</td>
+<td>${tok.column}</td>
+</tr>
+`
+})
+
+})
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 719-836-826
+ * Serving Flask app 'app'
+ * Debug mode: on
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 122-008-123
+127.0.0.1 - - [14/Mar/2026 17:40:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [14/Mar/2026 17:40:22] "POST /run HTTP/1.1" 200 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with watchdog (inotify)
+ * Debugger is active!
+ * Debugger PIN: 392-338-119
+127.0.0.1 - - [14/Mar/2026 17:53:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [14/Mar/2026 17:53:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [14/Mar/2026 17:54:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [14/Mar/2026 17:54:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.29.136.175:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with watchdog (inotify)
+ * Debugger is active!
+ * Debugger PIN: 113-035-960
+127.0.0.1 - - [14/Mar/2026 18:02:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [14/Mar/2026 18:02:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [14/Mar/2026 18:02:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [14/Mar/2026 18:02:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [14/Mar/2026 18:11:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [14/Mar/2026 18:11:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [14/Mar/2026 18:11:52] "POST /run HTTP/1.1" 200 -
+127.0.0.1 - - [14/Mar/2026 18:19:37] "GET / HTTP/1.1" 200 -
