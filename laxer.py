@@ -24,6 +24,12 @@ TOKEN_SPEC = [
     ("COLON", r":"),
     ("SEMICOLON", r";"),
     ("MISMATCH", r"."),
+    ("LBRACE", r"\{"),
+    ("RBRACE", r"\}"),
+    ("LBRACKET", r"\["),
+    ("RBRACKET", r"\]"),
+    ("HASH", r"#"),
+    ("SEMICOLON", r";"),
 ]
 
 MASTER_REGEX = re.compile(
