@@ -8,47 +8,55 @@ class Token:
     value: str
     line: int
     column: int
-
 TOKEN_SPEC = [
 
-    ("NEWLINE", r"\n"),
-    ("SKIP", r"[ \t\r]+"),
+("NEWLINE", r"\n"),
+("SKIP", r"[ \t\r]+"),
 
-    ("NUMBER", r"\d+(\.\d+)?"),
-    ("STRING", r"'([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\""),
+("COMMENT", r"#.*|//.*|/\*[\s\S]*?\*/"),
 
-    ("IDENT", r"[A-Za-z_][A-Za-z0-9_]*"),
+("NUMBER", r"\d+(\.\d+)?"),
 
-    ("OP", r"==|!=|<=|>=|[+\-*/%=<>]"),
+("STRING", r"'([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\""),
 
-    ("LPAREN", r"\("),
-    ("RPAREN", r"\)"),
+("IDENT", r"[A-Za-z_][A-Za-z0-9_]*"),
 
-    ("LBRACE", r"\{"),
-    ("RBRACE", r"\}"),
+("OP", r"\+\+|--|==|!=|<=|>=|&&|\|\||<<|>>|->|::|[+\-*/%=<>!&|]"),
 
-    ("LBRACKET", r"\["),
-    ("RBRACKET", r"\]"),
+("LPAREN", r"\("),
+("RPAREN", r"\)"),
 
-    ("COMMA", r","),
-    ("COLON", r":"),
-    ("SEMICOLON", r";"),
-    ("DOT", r"\."),
+("LBRACE", r"\{"),
+("RBRACE", r"\}"),
 
-    ("HASH", r"#"),
+("LBRACKET", r"\["),
+("RBRACKET", r"\]"),
 
-    ("MISMATCH", r"."),  # always LAST
+("COMMA", r","),
+("SEMICOLON", r";"),
+("COLON", r":"),
+("DOT", r"\."),
+
+("MISMATCH", r"."),
 ]
+
 
 MASTER_REGEX = re.compile(
     "|".join(f"(?P<{name}>{pattern})" for name, pattern in TOKEN_SPEC),
     re.MULTILINE,
 )
-
 KEYWORDS = {
-    "if","else","while","for","def","return",
-    "true","false","None",
-    "int","float","class","public","static"
+# python
+"def","return","if","else","while","for","class",
+
+# c / c++
+"int","float","double","char","void","struct",
+
+# java
+"public","private","static","new","this",
+
+# js
+"function","let","var","const"
 }
 
 def lex(text: str) -> Iterator[Token]:
