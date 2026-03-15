@@ -37,7 +37,7 @@ MASTER_REGEX = re.compile(
     re.MULTILINE,
 )
 
-KEYWORDS = {"if", "else", "while", "for", "def", "return", "true", "false", "None"}
+KEYWORDS = {"if", "else", "while", "for", "def", "return", "true", "false", "None","int","float","class","public","static"}
 
 def lex(text: str) -> Iterator[Token]:
     line = 1
