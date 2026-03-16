@@ -29,6 +29,15 @@ td,th{
 border:1px solid black;
 padding:6px;
 }
+
+#buffer{
+border:1px solid black;
+padding:10px;
+width:600px;
+font-family:monospace;
+margin-top:10px;
+background:#f5f5f5;
+}
 </style>
 
 </head>
@@ -37,14 +46,6 @@ padding:6px;
 
 <h2>Mini Compiler Lexer</h2>
 
-    <h3>Input Buffer</h3>
-<div id="buffer" style="
-border:1px solid black;
-padding:10px;
-width:600px;
-font-family:monospace;
-margin-top:10px;
-"></div>
 <textarea id="code">
 def add(x,y):
     return x+y
@@ -53,6 +54,9 @@ def add(x,y):
 <br>
 
 <button onclick="runCode()">Run</button>
+
+<h3>Input Buffer</h3>
+<div id="buffer"></div>
 
 <table id="result">
 <tr>
@@ -79,6 +83,10 @@ body:JSON.stringify({code:code})
 .then(res=>res.json())
 .then(data=>{
 
+// show buffer
+document.getElementById("buffer").innerText =
+data.buffer.join(" ")
+
 let table = document.getElementById("result")
 
 table.innerHTML = `
@@ -90,7 +98,7 @@ table.innerHTML = `
 </tr>
 `
 
-data.forEach(tok=>{
+data.tokens.forEach(tok=>{
 table.innerHTML += `
 <tr>
 <td>${tok.type}</td>
