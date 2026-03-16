@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
-from lexer import lex   # your lexer file
+from lexer import lex
+from buffer import InputBuffer   # import buffer
 
 app = Flask(__name__)
 
@@ -11,6 +12,17 @@ def index():
 def run_code():
     code = request.json["code"]
 
+    # Run buffer
+    buffer = InputBuffer(code)
+    buffer_stream = []
+
+    while True:
+        ch = buffer.next_char()
+        if ch is None:
+            break
+        buffer_stream.append(ch)
+
+    # Run lexer
     tokens = []
     for tok in lex(code):
         tokens.append({
@@ -20,7 +32,11 @@ def run_code():
             "column": tok.column
         })
 
-    return jsonify(tokens)
+    # return both buffer + tokens
+    return jsonify({
+        "buffer": buffer_stream,
+        "tokens": tokens
+    })
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
